@@ -46,6 +46,14 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  # Chapter 5 From Acceptance Specs to Unit Specs pg 63
+  # Normally, when the tests fail, it prints a backtrace that can contain dozen of lines
+  # of framework code, obscuring the application code we are looking for.
+  # leave this here to filter out other gems backtrace on error (RSpec framework already filters out its own code by default)
+  # Benefit: less to read, easier to find errors related to application more quickly
+  # To see full backtrace: pass --backtrace or -b flag to RSpec
+  config.filter_gems_from_backtrace 'rack', 'rack-test', 'sequel', 'sinatra'
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

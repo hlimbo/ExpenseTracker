@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require 'json'
 
+require_relative 'ledger'
+
 # The practice of hard coding return values
 # just to satisfy an expectation is known as sliming the test
 # Sliming a test allow us to flesh out the spec end-to-end and then
@@ -15,11 +17,30 @@ require 'json'
 # 3. Reach Better Code
 #   - (According to Robert C Martin (author of Clean code) could lead to better Algorithms!)
 
+
+# JSON.generate(hash_object) returns a JSON string
+# JSON.parse(json_string) returns a json hash object
+
 module ExpenseTracker
     class API < Sinatra::Base
+        def initialize(ledger: Ledger.new)
+            @ledger = ledger
+            super() # rest of initialization from Sinatra
+        end
+        
         # mocks the response code supposedly that we get back from the app!
+        # In Sinatra, the following methods below are called routes!
         post '/expenses' do 
-            JSON.generate('expense_id' => 42)
+            # status 404 # test for failure
+            expense = JSON.parse(request.body.read)
+            result = @ledger.record(expense)
+
+            if result.success?
+                JSON.generate('expense_id' => result.expense_id)
+            else
+                status 422
+                JSON.generate('error' => 'Expense incomplete')
+            end
         end
 
         get '/expenses/:date' do

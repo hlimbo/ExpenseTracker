@@ -4,6 +4,7 @@ require 'json'
 
 # 1st step is to write code you wish you had to help flesh out the design of the code
 
+# Acceptance Specs live here
 module ExpenseTracker
     RSpec.describe 'Expense Tracker API' do
         include Rack::Test::Methods
