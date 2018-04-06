@@ -1,0 +1,66 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "echo Hello"
+        },
+        {
+            "label": "run active rspec file",
+            "type": "shell",
+            "command": "bundle exec rspec",
+            "args": [
+                "--require",
+                "spec_helper",
+                "--format",
+                "documentation",
+                "--color",
+                "${relativeFile}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "run all rspec files",
+            "type": "shell",
+            "command": "bundle exec rspec",
+            "args": [
+                "--require",
+                "spec_helper",
+                "--format",
+                "documentation",
+                "--color"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "run all failed specs",
+            "type": "shell",
+            "command": "bundle exec rspec",
+            "args": [
+                "--require",
+                "spec_helper",
+                "--format",
+                "documentation",
+                "--color",
+                "--only-failures"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "run all failed specs in active rspec file",
+            "type": "shell",
+            "command": "bundle exec rspec",
+            "args": [
+                "--require",
+                "spec_helper",
+                "--color",
+                "--only-failures",
+                "${relativeFile}"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
