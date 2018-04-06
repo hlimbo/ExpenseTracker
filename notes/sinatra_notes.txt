@@ -99,7 +99,7 @@ get '/foo' do
 end
 
 :: Return Values ::
-    - Return value of a block determines at lease the response
+    - Return value of a block determines at least the response
     body passed on to the HTTP client, or at least the next
     middleware in the Rack stack.
     - Most commonly is a string, but other values are accepted

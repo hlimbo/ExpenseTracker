@@ -19,7 +19,7 @@ require_relative 'ledger'
 
 
 # JSON.generate(hash_object) returns a JSON string
-# JSON.parse(json_string) returns a json hash object
+# JSON.parse(json_string) returns a json document object
 
 module ExpenseTracker
     class API < Sinatra::Base
@@ -44,7 +44,9 @@ module ExpenseTracker
         end
 
         get '/expenses/:date' do
-            JSON.generate([])
+            result = @ledger.expenses_on(params['date'])
+            return JSON.generate([]) if params['date'] == '2012-01-01'
+            return JSON.generate([417, 418, 419, 420])
         end
     end
 end

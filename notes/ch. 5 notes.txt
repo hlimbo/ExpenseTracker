@@ -9,6 +9,7 @@ Q2: How to use dependency injection to write flexible testable code
 Q3: The use of test doubles / mock objects to stand in for real ones
 
 Q4: How to refactor your specs to keep them clean and readable
+    DRY (Don't Repeat Yourself Principle and examples within the code of where applicable)
 
 
 Unit specs:
