@@ -1,0 +1,7 @@
+:: Chapter 6 Getting Real: Integration Specs ::
+
+- Can write migration scripts in ruby rspec...
+
+Isolating Your Specs Using Database Transactions
+
+- 
